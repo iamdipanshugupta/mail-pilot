@@ -1,0 +1,47 @@
+﻿const { Pool } = require('pg');
+require('dotenv').config();
+
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+
+const sql = 
+CREATE TABLE IF NOT EXISTS corsair_integrations (
+    id TEXT PRIMARY KEY,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    name TEXT NOT NULL,
+    config JSONB NOT NULL DEFAULT '{}',
+    dek TEXT NULL
+);
+CREATE TABLE IF NOT EXISTS corsair_accounts (
+    id TEXT PRIMARY KEY,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    tenant_id TEXT NOT NULL,
+    integration_id TEXT NOT NULL REFERENCES corsair_integrations(id),
+    config JSONB NOT NULL DEFAULT '{}',
+    dek TEXT NULL
+);
+CREATE TABLE IF NOT EXISTS corsair_entities (
+    id TEXT PRIMARY KEY,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    account_id TEXT NOT NULL REFERENCES corsair_accounts(id),
+    entity_id TEXT NOT NULL,
+    entity_type TEXT NOT NULL,
+    version TEXT NOT NULL,
+    data JSONB NOT NULL DEFAULT '{}'
+);
+CREATE TABLE IF NOT EXISTS corsair_events (
+    id TEXT PRIMARY KEY,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    account_id TEXT NOT NULL REFERENCES corsair_accounts(id),
+    event_type TEXT NOT NULL,
+    payload JSONB NOT NULL DEFAULT '{}',
+    status TEXT
+);
+;
+
+pool.query(sql)
+  .then(() => { console.log('✅ Tables created successfully!'); pool.end(); })
+  .catch(e => { console.error('❌ Error:', e.message); pool.end(); });
