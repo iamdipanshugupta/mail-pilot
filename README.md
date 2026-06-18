@@ -5,6 +5,9 @@ Google Calendar into a single command center with AI-assisted email triage.
 
 Built for the **Command Inbox: Corsair Hackathon** (ChaiCode x Corsair).
 
+**Live app**: https://mail-pilot-fawn.vercel.app
+**Repo**: https://github.com/iamdipanshugupta/mail-pilot
+
 ---
 
 ## The Problem
@@ -34,6 +37,7 @@ the app or hitting Google's native UI.
 | Database | Neon Postgres + Drizzle ORM |
 | AI | Groq (`llama-3.1-8b-instant`) for email priority classification |
 | UI | Tailwind CSS, Lucide icons |
+| Hosting | Vercel |
 
 ---
 
@@ -67,8 +71,7 @@ the app or hitting Google's native UI.
    single modal with title, description, date, and time — no need to open
    calendar.google.com.
 4. **Keyboard-shortcut reference panel** — built in from the start, with the
-   inbox UI/IA wired for fast keyboard-first triage (see `SHORTCUT_GROUPS` in
-   `inbox/page.tsx`).
+   inbox UI/IA wired for fast keyboard-first triage.
 
 ---
 
@@ -79,8 +82,7 @@ the app or hitting Google's native UI.
   tenant-scoped client — no tenant ever sees another tenant's tokens or data.
 - **Token encryption**: Corsair encrypts `access_token` / `refresh_token` /
   `expires_at` at rest in `corsair_accounts.config` using a KEK
-  (`CORSAIR_KEK` env var) — verified via a dev-only `/api/debug/credentials`
-  route during development (removed before production).
+  (`CORSAIR_KEK` env var).
 - **AI classification is additive, not blocking**: emails load immediately
   from Gmail via Corsair; classification runs in the background and emails
   re-render with priority badges as soon as it resolves. If classification
@@ -96,16 +98,18 @@ CORSAIR_KEK=...                         # Corsair encryption key
 AUTH_SECRET=...                         # NextAuth secret
 AUTH_GOOGLE_ID=...                      # Google OAuth client ID
 AUTH_GOOGLE_SECRET=...                  # Google OAuth client secret
-APP_URL=http://localhost:3000           # Base app URL (no trailing slash)
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+APP_URL=http://localhost:3000           # No trailing slash; use your deployed domain in production
 AUTH_URL=http://localhost:3000
 NEXTAUTH_URL=http://localhost:3000
 GROQ_API_KEY=...                        # Groq API key for AI classification
 ```
 
-> Google Cloud Console must have both of these registered as Authorized
-> Redirect URIs:
-> `http://localhost:3000/api/auth/callback/google` (NextAuth login)
-> `http://localhost:3000/api/connect/callback` (Corsair OAuth — Gmail/Calendar)
+> Google Cloud Console must have these registered as Authorized Redirect URIs
+> (both local and production domains):
+> `<domain>/api/auth/callback/google` (NextAuth login)
+> `<domain>/api/connect/callback` (Corsair OAuth — Gmail/Calendar)
 
 ---
 
@@ -127,7 +131,7 @@ npm run dev
 
 ## Bonus Tasks Attempted
 
-- [x] AI-based email priority classification via Groq (bonus task #3)
+- [x] AI-based email priority classification via Groq
 - [ ] Corsair MCP agent chat
 - [ ] Realtime webhooks (Corsair built-in)
 - [ ] Keyboard shortcut execution (panel built, key bindings WIP)
@@ -138,11 +142,11 @@ npm run dev
 
 ## Submission Links
 
-- **GitHub**: _add repo link_
-- **Live deployment**: _add Vercel link_
-- **Demo video**: _add video link_
-- **X/Twitter post**: _add link_
-- **LinkedIn post**: _add link_
+- **GitHub**: https://github.com/iamdipanshugupta/mail-pilot
+- **Live deployment**: https://mail-pilot-fawn.vercel.app/
+- **Demo video**: _coming soon_
+- **X/Twitter post**: _coming soon_
+- **LinkedIn post**: _coming soon_
 
 Builder Mode On | MacBook Giveaway Hackathon
 #chaicode #corsair-dev
