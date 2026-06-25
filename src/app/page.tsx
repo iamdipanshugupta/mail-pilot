@@ -51,10 +51,26 @@ const FEATURES = [
 // The signature element: a live-feeling terminal strip showing what
 // Corsair is actually doing under the hood while you type one sentence.
 const AGENT_STEPS = [
-  { tag: "You", text: "send Riya the Q2 deck and book 30 min tomorrow at 4", tone: "user" },
-  { tag: "Corsair · Gmail", text: "Drafting email to riya@company.com with attachment", tone: "agent" },
-  { tag: "Corsair · Calendar", text: "Creating event \u201cSync w/ Riya\u201d \u2014 Tomorrow, 4:00\u20134:30 PM", tone: "agent" },
-  { tag: "Done", text: "Email sent. Invite created. Riya notified.", tone: "done" },
+  {
+    tag: "You",
+    text: "send Riya the Q2 deck and book 30 min tomorrow at 4",
+    tone: "user",
+  },
+  {
+    tag: "Corsair · Gmail",
+    text: "Drafting email to riya@company.com with attachment",
+    tone: "agent",
+  },
+  {
+    tag: "Corsair · Calendar",
+    text: "Creating event \u201cSync w/ Riya\u201d \u2014 Tomorrow, 4:00\u20134:30 PM",
+    tone: "agent",
+  },
+  {
+    tag: "Done",
+    text: "Email sent. Invite created. Riya notified.",
+    tone: "done",
+  },
 ];
 
 export default function HomePage() {
@@ -67,7 +83,9 @@ export default function HomePage() {
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0f9d8a] text-white">
               <Mail className="h-4 w-4" strokeWidth={2.5} />
             </span>
-            <span className="text-lg font-semibold tracking-tight">MailPilot</span>
+            <span className="text-lg font-semibold tracking-tight">
+              MailPilot
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-[#6b6358] md:flex">
@@ -113,9 +131,9 @@ export default function HomePage() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-[#6b6358]">
-          MailPilot wires Gmail and Google Calendar together through Corsair,
-          so one sentence can send an email, book a meeting, and notify
-          someone — without you ever opening a Google tab.
+          MailPilot wires Gmail and Google Calendar together through Corsair, so
+          one sentence can send an email, book a meeting, and notify someone —
+          without you ever opening a Google tab.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -175,7 +193,8 @@ export default function HomePage() {
           </div>
         </div>
         <p className="mt-4 text-center text-sm text-[#a39c8e]">
-          Real Gmail and Calendar API calls, routed through Corsair &mdash; not a scripted demo.
+          Real Gmail and Calendar API calls, routed through Corsair &mdash; not
+          a scripted demo.
         </p>
       </section>
 
@@ -202,8 +221,12 @@ export default function HomePage() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e6f6f3] text-[#0c8577]">
                   <Icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 text-base font-semibold">{feature.title}</h3>
-                <p className="mt-2 text-sm text-[#6b6358]">{feature.description}</p>
+                <h3 className="mt-4 text-base font-semibold">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm text-[#6b6358]">
+                  {feature.description}
+                </p>
               </div>
             );
           })}
@@ -221,8 +244,8 @@ export default function HomePage() {
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[#bdb6a9]">
             MailPilot securely connects to Gmail and Google Calendar through
-            Corsair in one click. No imports, no migrations — your data stays
-            in Google, encrypted at rest.
+            Corsair in one click. No imports, no migrations — your data stays in
+            Google, encrypted at rest.
           </p>
           <Link
             href="/login"
@@ -242,36 +265,75 @@ export default function HomePage() {
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0f9d8a] text-white">
                   <Mail className="h-4 w-4" strokeWidth={2.5} />
                 </span>
-                <span className="text-lg font-semibold tracking-tight">MailPilot</span>
+                <span className="text-lg font-semibold tracking-tight">
+                  MailPilot
+                </span>
               </Link>
               <p className="mt-3 text-sm text-[#6b6358]">
                 Email &amp; calendar, reimagined with AI. Built on Corsair.
               </p>
             </div>
-
             <div>
               <h4 className="text-sm font-semibold text-[#1c1b1a]">Product</h4>
               <ul className="mt-3 space-y-2 text-sm text-[#6b6358]">
-                <li><a href="#features" className="hover:text-[#1c1b1a]">Features</a></li>
-                <li><a href="#how-it-works" className="hover:text-[#1c1b1a]">How it works</a></li>
-                <li><a href="#" className="hover:text-[#1c1b1a]">Pricing</a></li>
+                <li>
+                  <a href="#features" className="hover:text-[#1c1b1a]">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#how-it-works" className="hover:text-[#1c1b1a]">
+                    How it works
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-[#1c1b1a]">
+                    Pricing
+                  </a>
+                </li>
               </ul>
             </div>
-
             <div>
               <h4 className="text-sm font-semibold text-[#1c1b1a]">Company</h4>
               <ul className="mt-3 space-y-2 text-sm text-[#6b6358]">
-                <li><a href="#" className="hover:text-[#1c1b1a]">About</a></li>
-                <li><a href="#" className="hover:text-[#1c1b1a]">Blog</a></li>
-                <li><a href="#" className="hover:text-[#1c1b1a]">Contact</a></li>
+                <li>
+                  <a href="#" className="hover:text-[#1c1b1a]">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-[#1c1b1a]">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-[#1c1b1a]">
+                    Contact
+                  </a>
+                </li>
               </ul>
             </div>
-
             <div>
               <h4 className="text-sm font-semibold text-[#1c1b1a]">Legal</h4>
+
               <ul className="mt-3 space-y-2 text-sm text-[#6b6358]">
-                <li><a href="#" className="hover:text-[#1c1b1a]">Privacy</a></li>
-                <li><a href="#" className="hover:text-[#1c1b1a]">Terms</a></li>
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="hover:text-[#1c1b1a] transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    href="/terms"
+                    className="hover:text-[#1c1b1a] transition-colors"
+                  >
+                    Terms of Service
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
