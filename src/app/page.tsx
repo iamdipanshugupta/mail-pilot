@@ -270,8 +270,8 @@ export default function HomePage() {
             <div>
               <h4 className="text-sm font-semibold text-[#1c1b1a]">Legal</h4>
               <ul className="mt-3 space-y-2 text-sm text-[#6b6358]">
-                <li><a href="#" className="hover:text-[#1c1b1a]">Privacy</a></li>
-                <li><a href="#" className="hover:text-[#1c1b1a]">Terms</a></li>
+                <li><a href="http://localhost:3000/privacy" className="hover:text-[#1c1b1a]">Privacy</a></li>
+                <li><a href="http://localhost:3000/terms" className="hover:text-[#1c1b1a]">Terms</a></li>
               </ul>
             </div>
           </div>
